@@ -8,7 +8,7 @@ const NavBar = () => {
     return (
         <nav className="navbar-light bg-light d-flex justify-content-center">
             <Link to="/" className="navbar-brand">
-                <h3>TodoQu</h3>
+                <h3>GO-Katalog</h3>
             </Link>
             <NavItems/>
         </nav>

@@ -29,7 +29,7 @@ class AddTask extends Component {
         onSubmit={this.handleSubmit}
         >
           <div className="form-group">
-            <label htmlFor="task">Add Task</label>
+            <label htmlFor="task">Add Product</label>
             <input 
             type="text"
             className="form-control" 

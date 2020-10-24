@@ -10,9 +10,10 @@ const Tasks = ({tasks}) => { // slr <tab>
         <table className="table table-striped table-dark">
   <thead>
     <tr className="text-info">
-      <th scope="col">Tasks</th>
+      <th scope="col">Image</th>
+      <th scope="col">Name</th>
       <th scope="col">Added On</th>
-      <th scope="col">Status</th>
+      <th scope="col">Is Showed</th>
       <th scope="col">Delete</th>
     </tr>
   </thead>
