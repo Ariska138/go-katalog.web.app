@@ -32,8 +32,8 @@ const UploadImage = () => {
         .then((url) => {
           console.log(url)
           //Todo
-        //   this.props.setURL(url);
-            // this.data(url);
+        //   this.props.setURL(url); error
+            // this.props.data(url); error
         })
       }
     );
