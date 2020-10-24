@@ -1,5 +1,3 @@
-import { analytics, auth, storage } from "firebase"
-
 export const uploadImage = img => {
     return (dispatch, getState, {getFirebase}) => {
         const firebase = getFirebase();

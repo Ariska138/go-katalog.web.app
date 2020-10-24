@@ -1,5 +1,3 @@
-import { analytics, auth } from "firebase"
-
 export const signIn = creds => {
     return (dispatch, getState, {getFirebase}) => {
         const firebase = getFirebase();
