@@ -1,15 +1,42 @@
 import React, {useState} from 'react';
-import { connect } from "react-redux";
-import {uploadImage} from "../../actions/ImgAction"
+// import { connect } from "react-redux";
+import {getFirebase} from "react-redux-firebase";
 
 
-const UploadImage = ({uploadImage}) => {
+const UploadImage = () => {
   const [image, setImage] = useState(null);
 
   const handleChangeImage = (e) => {
     if (e.target.files[0]) {
         setImage(e.target.files[0]);
     }
+  };
+
+ const uploadImage = (img) => {
+    const firebase = getFirebase();
+
+    const uploadImage = firebase.storage().ref(`images/${img.name}`).put(img);
+
+    uploadImage.on(
+      "state_changed",
+      (snapshot) => {
+        //progress
+      },
+      (error) => {
+        console.log('error');
+      },
+      () => {
+        firebase.storage().ref("images")
+        .child(img.name)
+        .getDownloadURL()
+        .then((url) => {
+          console.log(url)
+          //Todo
+        //   this.props.setURL(url);
+            // this.data(url);
+        })
+      }
+    );
   };
 
   console.log("image: ",image);
@@ -37,11 +64,11 @@ const UploadImage = ({uploadImage}) => {
   );
 };
 
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-      uploadImage: (img) => dispatch(uploadImage(img)),
-    };
-  };
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//       uploadImage: (img) => dispatch(uploadImage(img)),
+//     };
+//   };
   
-  export default connect(null, mapDispatchToProps)(UploadImage);
+//   export default connect(null, mapDispatchToProps)(UploadImage);
+export default UploadImage;
