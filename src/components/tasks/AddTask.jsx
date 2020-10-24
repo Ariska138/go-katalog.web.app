@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {addTask} from "../../actions/taskActions";
 import {connect} from "react-redux";
+import UploadImage from "./UploadImage";
 
 class AddTask extends Component {
   state = {
@@ -37,6 +38,7 @@ class AddTask extends Component {
             onChange={this.handleChange}
             />
           </div>
+          <UploadImage/>
         <button type="submit" className="btn btn-primary">
             Add
           </button>
