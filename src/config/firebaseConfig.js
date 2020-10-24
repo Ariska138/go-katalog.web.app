@@ -4,14 +4,14 @@ import "firebase/auth";
  
  // Your web app's Firebase configuration
  var firebaseConfig = {
-    apiKey: "AIzaSyCrbDjDaa1T7KiXggar16mHLid96Haw4zo",
-    authDomain: "todoqu.firebaseapp.com",
-    databaseURL: "https://todoqu.firebaseio.com",
-    projectId: "todoqu",
-    storageBucket: "todoqu.appspot.com",
-    messagingSenderId: "135932337458",
-    appId: "1:135932337458:web:e5938be044bb4e6c444b2b"
-  };
+  apiKey: "AIzaSyAjN8v9uGLbMCmDgBJyj9Z-QkK-nTVJ0PY",
+  authDomain: "go-katalog.firebaseapp.com",
+  databaseURL: "https://go-katalog.firebaseio.com",
+  projectId: "go-katalog",
+  storageBucket: "go-katalog.appspot.com",
+  messagingSenderId: "263417923475",
+  appId: "1:263417923475:web:22e550901f397a6f908a66"
+};
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
