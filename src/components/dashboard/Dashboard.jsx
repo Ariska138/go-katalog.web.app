@@ -5,7 +5,7 @@ import{connect} from "react-redux";
 import { Redirect } from "react-router-dom";
 
 const Dashboard = ({uid}) => {
-  if(!uid) return <Redirect to="/signin"/>
+  if(!uid) return <Redirect to="/"/>
 
   return (
     <div className="container">

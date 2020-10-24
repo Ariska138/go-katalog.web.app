@@ -23,7 +23,7 @@ class SignIn extends Component {
 
   render() {
     const { uid } = this.props;
-    if(uid) return <Redirect to="/"/>
+    if(uid) return <Redirect to="/dashboard"/>
     
     return (
       <div className="container my-5">

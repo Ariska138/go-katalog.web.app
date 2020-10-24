@@ -1,44 +1,44 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import {signOut} from "../../actions/AuthAction";
-import {connect} from "react-redux";
+import React from "react";
+import { Link } from "react-router-dom";
+import { signOut } from "../../actions/AuthAction";
+import { connect } from "react-redux";
 
-const NavItems = ({signOut, uid}) => {
-    if(uid){
-        return (
-        <Link 
-            to="/signin" 
-            className="nav-link"
-            onClick={signOut}
-            >
-                Sign Out
-            </Link>
-            )
-    }
-    
+const NavItems = ({ signOut, uid }) => {
+  if (uid) {
     return (
         <>
-           
-            <Link to="/signup" className="nav-link">
-                Sign Up
-            </Link>
-            <Link to="/signin" className="nav-link">
-                Sign In
-            </Link>
-          </>  
+        <Link to="/dashboard" className="nav-link">
+        Dashboard
+      </Link>
+      <Link to="/" className="nav-link" onClick={signOut}>
+        Sign Out
+      </Link>
+        </>
     );
-}
+  }
 
-const mapStateToProps = state => {
-    const uid = state.firebase.auth.uid;
+  return (
+    <>
+      <Link to="/signup" className="nav-link">
+        Sign Up
+      </Link>
+      <Link to="/signin" className="nav-link">
+        Sign In
+      </Link>
+    </>
+  );
+};
 
-    return {uid}
-}
+const mapStateToProps = (state) => {
+  const uid = state.firebase.auth.uid;
 
-const mapDispatchToProps = dispatch => {
-    return {
-        signOut : () => dispatch(signOut())
-    }
-}
+  return { uid };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch(signOut()),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavItems);
