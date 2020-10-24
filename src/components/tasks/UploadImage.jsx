@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
+import { connect } from "react-redux";
+import {uploadImage} from "../../actions/ImgAction"
 
-const UploadImage = () => {
+const UploadImage = ({uploadImage}) => {
   const [image, setImage] = useState(null);
 
   const handleChangeImage = (e) => {
@@ -11,8 +13,13 @@ const UploadImage = () => {
 
   console.log("image: ",image);
 
-  const handleUpload = () => {
-
+  const handleUpload = (e) => {
+    e.preventDefault();
+      if(image) {
+          uploadImage(image);
+      }else{
+          console.log("image not found");
+      }
   };
 
   return (
@@ -29,4 +36,11 @@ const UploadImage = () => {
   );
 };
 
-export default UploadImage;
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+      uploadImage: (img) => dispatch(uploadImage(img)),
+    };
+  };
+  
+  export default connect(null, mapDispatchToProps)(UploadImage);
