@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { connect } from "react-redux";
 import {uploadImage} from "../../actions/ImgAction"
 
+
 const UploadImage = ({uploadImage}) => {
   const [image, setImage] = useState(null);
 
