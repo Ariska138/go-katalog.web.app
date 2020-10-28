@@ -6,7 +6,7 @@ import UploadImage from "./UploadImage";
 class AddTask extends Component {
   state = {
     task: "",
-    url: ""
+    urlImg: ""
   };
 
   handleChange = (e) => {
@@ -16,8 +16,9 @@ class AddTask extends Component {
   };
 
   setURL = (url) => {
+    console.log('set url image: ', url);
     this.setState({
-      url
+      urlImg : url
     });
   }
 
@@ -41,7 +42,7 @@ class AddTask extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <UploadImage data={this.setURL.bind(this)}/>
+          <UploadImage upload={this.setURL}/>
           <button type="submit" className="btn btn-primary">
             Add
           </button>
@@ -53,7 +54,7 @@ class AddTask extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addTask: ({task, url}) => dispatch(addTask({task, url})),
+    addTask: ({task, urlImg}) => dispatch(addTask({task, urlImg})),
   };
 };
 

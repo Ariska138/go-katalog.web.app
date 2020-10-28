@@ -1,4 +1,4 @@
-export const addTask = ({task, url}) => {
+export const addTask = ({task, urlImg}) => {
     return (dispatch, getState, {getFirebase}) => {
         const firestore = getFirebase().firestore();
         const authorId = getState().firebase.auth.uid;
@@ -6,8 +6,8 @@ export const addTask = ({task, url}) => {
         firestore
         .collection("tasks")
         .add({
-            ...task,
-            url,
+            task,
+            urlImg,
             authorId,
             date: new Date()
         })

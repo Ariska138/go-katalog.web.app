@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {getFirebase} from "react-redux-firebase";
 
 
-const UploadImage = () => {
+const UploadImage = ({upload}) => {
   const [image, setImage] = useState(null);
 
   const handleChangeImage = (e) => {
@@ -21,6 +21,7 @@ const UploadImage = () => {
       "state_changed",
       (snapshot) => {
         //progress
+        
       },
       (error) => {
         console.log('error');
@@ -30,10 +31,7 @@ const UploadImage = () => {
         .child(img.name)
         .getDownloadURL()
         .then((url) => {
-          console.log(url)
-          //Todo
-        //   this.props.setURL(url); error
-            // this.props.data(url); error
+            upload(url);
         })
       }
     );

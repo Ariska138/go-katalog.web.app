@@ -14,14 +14,13 @@ const Task = ({ task, removeTask, toggleChecked }) => {
     removeTask(task);
   };
 
-
   const handleCheck = task => {
       toggleChecked(task);
   }
 
   return (
     <tr>
-      <th scope="row"><img height="50px" alt="item" src="https://ecs7-p.tokopedia.net/img/cache/200-square/product-1/2019/9/8/4752312/4752312_da11898f-7cd4-4518-b754-f04a88be5db3_525_525.jpg"/></th>
+      <th scope="row"><img height="50px" alt={task.urlImg} src={task.urlImg}/></th>
       <th>{task.task}</th>
       <td>{moment(task.date.toDate()).calendar()}</td>
       <td>
