@@ -5,12 +5,9 @@ import {getFirebase} from "react-redux-firebase";
 
 const UploadImage = ({upload}) => {
   const [image, setImage] = useState(null);
+  const [progress, setProgress] = useState(0);
 
-  const handleChangeImage = (e) => {
-    if (e.target.files[0]) {
-        setImage(e.target.files[0]);
-    }
-  };
+  
 
  const uploadImage = (img) => {
     const firebase = getFirebase();
@@ -21,6 +18,8 @@ const UploadImage = ({upload}) => {
       "state_changed",
       (snapshot) => {
         //progress
+        const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        setProgress(progress);
         
       },
       (error) => {
@@ -35,6 +34,13 @@ const UploadImage = ({upload}) => {
         })
       }
     );
+  };
+
+  const handleChangeImage = (e) => {
+    if (e.target.files[0]) {
+        setImage(e.target.files[0]);
+        uploadImage(e.target.files[0]);
+    }
   };
 
   console.log("image: ",image);
@@ -55,9 +61,11 @@ const UploadImage = ({upload}) => {
         type="file"
         className="form-control"
         id="image"
+        accept="image/x-png,image/gif,image/jpeg"
         onChange={handleChangeImage}
       />
-      <button onClick={handleUpload}>Upload</button>
+      {/* <button onClick={handleUpload}>Upload</button> */}
+      <progress value={progress} max='100'/>
     </div>
   );
 };
