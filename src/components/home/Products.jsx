@@ -6,12 +6,12 @@ import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import Product from "./Product";
 
-const Products = () => {
+const Products = ({tasks}) => {
     return (
         <div className="album py-5 bg-light">
             <div className="container">
               <div className="row">
-                  <Product/>
+              {tasks && tasks.map(task => <Product task={task} key={task.id}/>)}
               </div>
             </div>
           </div>
